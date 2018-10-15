@@ -1,0 +1,1 @@
+web: gunicorn api-djangorest-tcc.wsgi --log-file -

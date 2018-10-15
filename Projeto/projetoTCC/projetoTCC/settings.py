@@ -25,7 +25,7 @@ SECRET_KEY = '7$=a9+h48qzx@$v!9j5cuyvqtucvh8ajhrru7=*&ds2_!0#amv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['api-django-tcc.herokuapp.com/','localhost']
+ALLOWED_HOSTS = ['api-djangorest-tcc.herokuapp.com/ |g','localhost']
 
 
 # Application definition
