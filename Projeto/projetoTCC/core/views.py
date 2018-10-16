@@ -1,20 +1,37 @@
+from datetime import datetime
+
+from django.utils import timezone
 from django.shortcuts import render
-from .models import Dados,Dispositivo
-from rest_framework import viewsets
-from .serializers import DadosSerializer,DispositivoSerializer
+from .models import Dados, Dispositivo
+from django.http import HttpResponse,JsonResponse
+from django .template import loader
 
-class DadosViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows data to be viewed or edited.
-    """
-    queryset = Dados.objects.all()
-    serializer_class = DadosSerializer
 
-class DispositivoViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows dispositive to be viewed or edited.
-    """
-    queryset = Dispositivo.objects.all()
-    serializer_class = DispositivoSerializer
+#from .serializers import DadosSerializer,DispositivoSerializer
 
-# Create your views here.
+
+def teste(request):
+    list1 = Dados.objects.filter(dispositivo.nome='DF')
+    list2= Dispositivo.objects.get(pk=1)
+    lista = list1 | list2
+    now = datetime.now
+    #hoje=now.day
+
+    listO = Dados.objects.select_related('dispositivo').get(id=3)
+    lat = Dispositivo.objects.get(pk=1)
+    list = Dados.objects.select_related('dispositivo').get(dispositivo=3)
+    # list = Dados.objects.filter(data=3)
+    ult = Dados.objects.latest('data')
+
+    api_key = 'AIzaSyC-gwBjleF-ixYwe5NhiF6TMVIMNe1WED4'
+    contex = { 'list':list1,
+              'api_key': api_key,
+              'lat': lat,
+              'long': '-48.06575099999998',
+              'ult':ult,
+              'listO':listO,
+
+              }
+    #return JsonResponse(list)
+    return render(request,"index.html", contex)
+

@@ -1,7 +1,5 @@
 from django.db import models
 
-from django.db import models
-
 
 class Dados(models.Model):
     leituraUV = models.IntegerField()
@@ -9,7 +7,9 @@ class Dados(models.Model):
     dispositivo = models.ForeignKey('Dispositivo', on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Índice UV: %d" % (self.leituraUV)
+        return "%d" % (self.leituraUV)
+
+
 
 class Dispositivo(models.Model):
     nome = models.CharField(max_length=190)
@@ -17,4 +17,4 @@ class Dispositivo(models.Model):
     latitude = models.FloatField(null=True,blank=True,default=None)
 
     def __str__(self):
-        return "Dispositivo: %s" % (self.nome)
+        return (self.nome)

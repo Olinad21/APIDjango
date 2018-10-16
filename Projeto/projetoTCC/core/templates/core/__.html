@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+</head><meta charset="UTF-8">
+    <title>Title</title>
+<body>
+
+  <div class="container-fluid">
+
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fas fa-table"></i>
+        Data Table Example</div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            {% if list %}
+            <thead>
+              <tr>
+                <th>leituraUV</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+             {% for item in list %}
+      	      <tr> 
+                <td>{{ item.leituraUV }}</td>
+
+      	      </tr>
+      	     {% endfor %}
+                 
+            </tbody>
+            {% else %}
+             		<p>No polls are available.</p>
+            {% endif %}
+          </table>
+        </div>
+      </div>
+      <div class="card-footer small text-muted"></div>
+    </div>
+
+  </div>
+  <!-- /.container-fluid -->
+
+
+</body>
+</html>
+<!-- /.content-wrapper -->
+
+
+
+
+ <table class="table table-bordered table-hover table-striped">
+                                          {% if list %}
+                                            <thead>
+                                              <tr>
+                                                <th>dispositivo</th>
+                                                <th>leituraUV</th>
+
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                             {% for item in list %}
+                                              <tr>
+                                                <td>{{item.dispositivo }}</td>
+                                                <td>{{ item.leituraUV }}</td>
+
+                                              </tr>
+                                             {% endfor %}
+
+                                            </tbody>
+                                            {% else %}
+                                                    <p>No data are available.</p>
+                                            {% endif %}
+                                          </table>
+
+
+
+
+
+
+
+
+
+ <div >
+         <iframe width="450"
+            height="300"
+            frameborder="0"
+            style="border:0"
+            src="https://www.google.com/maps/embed/v1/view?center={{ latitude }},{{ longitude }}&zoom=8&key={{ api_key }}"
+            allowfullscreen></iframe>
+        </div>
