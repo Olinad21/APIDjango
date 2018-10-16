@@ -2,12 +2,38 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <style>
-        .sticky-footer{
+        /* Checkbox Hack */
+
+        /* Checkbox Hack */
+        #toggle-1 {
+            display: none;
+        }
+
+        label {
+            -webkit-appearance: push-button;
+            -moz-appearance: button;
+            display: inline-block;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* CSS padrão da div */
+        #mostra {
+            display: none;
+        }
+
+        /* CSS quando o checkbox está marcado */
+        #toggle-1:checked ~ #mostra {
+            display: block;
+        }
+
+        .sticky-footer {
             position: relative;
             top: 15px;
             color: #FFFFFF;
 
         }
+
         .footer {
             max-width: 100%;
             width: 100%;
@@ -15,7 +41,7 @@
             align-content: center;
             align-items: center;
             text-align: center;
-            margin-top:120px;
+            margin-top: 120px;
             background: rgba(0, 1, 0, 0.77);
 
         }
@@ -45,6 +71,9 @@
 
     <!-- Bootstrap core CSS-->
     <link href="https://blackrockdigital.github.io/startbootstrap-sb-admin/vendor/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           rel="stylesheet">
 
     <!-- Custom fonts for this template-->
@@ -137,48 +166,76 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
+                    <a href="#">painel de controle</a>
                 </li>
-                <li class="breadcrumb-item active">Overview</li>
+                <li class="breadcrumb-item active">visão global</li>
             </ol>
+
+            <strong>
+                <p>Selecione o Dispositivo</p>
+            </strong>
+            <form method='post' action='/index'>
+                <select id="optDisp" name="selectDisp" disabled="true" required>
+                    {% for s in listDisp %}
+                    <option>{{s.nome}}</option>
+                    {% endfor %}
+                </select><br/><br/>
+            </form>
+
+            <a href="/admin/core/dispositivo/add/">add</a>
+
 
             <!-- Icon Cards-->
             <div class="row">
                 <div class="col-xl-3 col-sm-6 mb-3">
-                    <div class="card text-black bg-warning- o-hidden h-100">
+                    <div class="card text-black bg-warning o-hidden h-100">
                         <div class="card-body">
                             <div class="card-body-icon">
                                 <i class="fas fa-sun"></i>
                             </div>
 
-                            <div class="mr-5">Ultima leitura UV: {{ult}}</div>
+                            <div class="mr-5">
+                                <br/>
+                                <strong>Ultima leitura UV: {{ult}}</strong>
 
+
+                                <input type="checkbox" id="toggle-1">
+                                <div id="mostra">
+                                    <strong>Data: {{ult.data}}<br />
+                                        Dispositivo: {{ult.dispositivo}}<br />
+                                        Latitude: {{ult.dispositivo.latitude}}<br />
+                                        Longitude: {{ult.dispositivo.longitude}}<br />
+                                    </strong>
+                                </div>
+                            </div>
+                            <a class="" href="#">
+                                <label style="background-color: rgba(80,173,7,0);border-color: rgba(255,255,255,0)"
+                                       class="label label-info" for="toggle-1">
+                                    <i class="fas fa-plus"> </i>
+
+                                </label>
+                            </a>
                         </div>
-                        <a class="card-footer text-default clearfix small z-1" href="#">
-                            <span class="float-left">View Details</span>
-                            <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                        </a>
+
                     </div>
                 </div>
+
                 <div class="col-xl-3 col-sm-6 mb-3">
-                    <div class="card text-white bg-warning o-hidden h-100">
-                        <div class="card-body">
-                            <div class="card-body-icon">
-                                <i class="fas fa-fw fa-list"></i>
-                            </div>
 
-                            <div class="mr-5">{{listO}}</div>
+                    <img style="height: 250px;width: 350px"
+                         src="http://cancerdepelebrasil.com.br/imagens/cancer-de-pele-brasil-indice-ultravioleta.jpg"
+                    >
 
-                        </div>
-                        <a class="card-footer text-white clearfix small z-1" href="#">
-                            <span class="float-left">View Details</span>
-                            <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                        </a>
-                    </div>
+                    <!--<iframe-->
+                    <!--frameborder="1px"-->
+                    <!--style="border-radius:8px"-->
+                    <!--src="https://www.google.com/maps/embed/v1/place?key= {{api_key}}-->
+                    <!--&q={{lat.latitude}},{{long}}&zoom=14"-->
+                    <!--allowfullscreen class="mapApi">-->
+
+                    <!--</iframe>-->
+
+
                 </div>
 
 
@@ -225,92 +282,21 @@
         </div>
 
 
-        <script>
-
-            var editor; // use a global for the submit and return data rendering in the examples
-
-            $(document).ready(function () {
-                editor = new $.fn.dataTable.Editor({
-                    ajax: "../index",
-                    table: "#dTable",
-                    fields: [{
-                        label: "Dispositivo:",
-                        name: "dispositivo"
-                    }, {
-                        label: "Leitura UV:",
-                        name: "leituraUV"
-                    }, {
-                        label: "Data:",
-                        name: "data"
-                    }
-                    ]
-                });
-
-                var table = $('#dataTable').DataTable({
-                    lengthChange: false,
-                    ajax: "../php/staff.php",
-                    columns: [
-                        {
-                            data: null, render: function (data, type, row) {
-                                // Combine the first and last names into a single table field
-                                return data.first_name + ' ' + data.last_name;
-                            }
-                        },
-                        {data: "position"},
-                        {data: "office"},
-                        {data: "extn"},
-                        {data: "start_date"},
-                        {data: "salary", render: $.fn.dataTable.render.number(',', '.', 0, '$')}
-                    ],
-                    select: true
-                });
-
-                // Display the buttons
-                new $.fn.dataTable.Buttons(table, [
-                    {extend: "create", editor: editor},
-                    {extend: "edit", editor: editor},
-                    {extend: "remove", editor: editor}
-                ]);
-
-                table.buttons().container()
-                    .appendTo($('.col-sm-6:eq(0)', table.table().container()));
-            });
-
-
-        </script>
-
-
         <div class="divApi">
             <strong>
-               Localização do Dipositivo
+                <p>Localização do Dipositivo</p>
             </strong>
             <iframe
                     frameborder="1px"
                     style="border-radius:8px"
                     src="https://www.google.com/maps/embed/v1/place?key= {{api_key}}
-  &q={{lat.latitude}},{{long}}&zoom=14"
+                        &q={{lat.latitude}},{{long}}&zoom=14"
                     allowfullscreen class="mapApi">
 
             </iframe>
         </div>
 
-        <!--<canvas id="myChart" width="300" height="300"></canvas>-->
-        <!-- Area Chart Example-->
-        <!--<div class="card mb-3">
-
-            <div class="card-body">
-
-                &lt;!&ndash;<canvas id="myAreaChart" width="100%" height="30"></canvas>&ndash;&gt;
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
--->
-        <!-- DataTables Example -->
-
-        <!-- /.container-fluid -->
-
-        <!-- Sticky Footer -->
-
+        <
 
     </div>
 
