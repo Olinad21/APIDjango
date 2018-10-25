@@ -1,18 +1,21 @@
 # APIDjango
 
-#Instruçoes para execução
+# IstruÃ§oes para execuÃ§Ã£o
 
-1 -ativar virtualenv
+## Ativar virtualenv
 
-$ cd ProjetoProjeto\venv\Scripts\activate
+$ cd Projeto\Projeto\venv\Scripts\activate
 
-2 - rodar o servidor
+
+
+## iniciar o servidor 
 
 $ cd Projeto\projetoTCC
+
 $ python menage.py runserver 
 
 
-####  pronto #####
+## Pronto
 
 #Pagina Inicial: 
 
@@ -20,10 +23,12 @@ $ python menage.py runserver
 	http://localhost:8000/index
 
 
-#API - 
-	http://localhost:8000/api
-	http://localhost:8000/api/dados/{id}
-	http://localhost:8000/api/dispositivo{id}
+#API:
+	http://localhost:8000/api/
+	
+	http://localhost:8000/api/dados/{id}/
+	
+	http://localhost:8000/api/dispositivo{id}/
 
 
 
