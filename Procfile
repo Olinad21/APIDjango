@@ -1,1 +1,0 @@
-web: gunicorn Projeto.projetoTCC.projetoTCC.wsgi --log-file -
