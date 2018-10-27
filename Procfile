@@ -1,4 +1,4 @@
 release: ./python manage.py migrate
 web: ./python manage.py runserver
-web: gunicorn gettingstarted.wsgi --log-file -
+web: gunicorn Projeto.projetoTCC.projetoTCC.wsgi --log-file -
 
