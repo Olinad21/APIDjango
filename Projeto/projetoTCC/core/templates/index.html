@@ -2,63 +2,76 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <style>
-        /* Checkbox Hack */
 
-        /* Checkbox Hack */
-        #toggle-1 {
-            display: none;
+        @media (min-width: 1200px) {
+            .col-xl-3 {
+                -ms-flex: 0 0 25%;
+                /* flex: 0 0 25%; */
+                max-width: 200%;
+            }
         }
 
-        label {
-            -webkit-appearance: push-button;
-            -moz-appearance: button;
-            display: inline-block;
-            cursor: pointer;
-            padding: 5px;
-        }
+              .imgUV {
+                height: 100%;
+                width: 100%;
+            }
 
-        /* CSS padrão da div */
-        #mostra {
-            display: none;
-        }
+            /* Checkbox Hack */
+            /* Checkbox Hack */
+            #toggle-1 {
+                display: none;
+            }
 
-        /* CSS quando o checkbox está marcado */
-        #toggle-1:checked ~ #mostra {
-            display: block;
-        }
+            label {
+                -webkit-appearance: push-button;
+                -moz-appearance: button;
+                display: inline-block;
+                cursor: pointer;
+                padding: 5px;
+            }
 
-        .sticky-footer {
-            position: relative;
-            top: 15px;
-            color: #FFFFFF;
+            /* CSS padrão da div */
+            #mostra {
+                display: none;
+            }
 
-        }
+            /* CSS quando o checkbox está marcado */
+            #toggle-1:checked ~ #mostra {
+                display: block;
+            }
 
-        .footer {
-            max-width: 100%;
-            width: 100%;
-            height: 60px;
-            align-content: center;
-            align-items: center;
-            text-align: center;
-            margin-top: 120px;
-            background: rgba(0, 1, 0, 0.77);
+            .sticky-footer {
+                position: relative;
+                top: 15px;
+                color: #FFFFFF;
 
-        }
+            }
 
-        .divApi {
-            width: 96.5%;
-            height: 280px;
-            margin-bottom: 15px;
-            margin-left: 15px;
-            margin-right: 15px;
-            margin-top: 15px;
-        }
+            .footer {
+                max-width: 100%;
+                width: 100%;
+                height: 60px;
+                align-content: center;
+                align-items: center;
+                text-align: center;
+                margin-top: 120px;
+                background: rgba(0, 1, 0, 0.77);
 
-        .mapApi {
-            width: 100%;
-            height: 100%;
-        }
+            }
+
+            .divApi {
+                width: 96.5%;
+                height: 280px;
+                margin-bottom: 15px;
+                margin-left: 15px;
+                margin-right: 15px;
+                margin-top: 15px;
+            }
+
+            .mapApi {
+                width: 100%;
+                height: 100%;
+            }
 
     </style>
     <meta charset="utf-8">
@@ -182,12 +195,14 @@
                 </select><br/><br/>
             </form>
 
-            <a href="/admin/core/dispositivo/add/">add</a>
+            <a href="/admin/core/dispositivo/add/">
+                <i class="fas fa-plus-circle"> </i>
+            </a><br/>
 
 
             <!-- Icon Cards-->
             <div class="row">
-                <div class="col-xl-3 col-sm-6 mb-3">
+                <div id="idCard" class="col-xl-3 col-sm-6 mb-3">
                     <div class="card text-black bg-warning o-hidden h-100">
                         <div class="card-body">
                             <div class="card-body-icon">
@@ -201,10 +216,10 @@
 
                                 <input type="checkbox" id="toggle-1">
                                 <div id="mostra">
-                                    <strong>Data: {{ult.data}}<br />
-                                        Dispositivo: {{ult.dispositivo}}<br />
-                                        Latitude: {{ult.dispositivo.latitude}}<br />
-                                        Longitude: {{ult.dispositivo.longitude}}<br />
+                                    <strong>Data: {{ult.data}}<br/>
+                                        Dispositivo: {{ult.dispositivo}}<br/>
+                                        Latitude: {{ult.dispositivo.latitude}}<br/>
+                                        Longitude: {{ult.dispositivo.longitude}}<br/>
                                     </strong>
                                 </div>
                             </div>
@@ -220,9 +235,9 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-sm-6 mb-3">
+                <div id="idCard2" class="col-xl-3 col-sm-6 mb-3">
 
-                    <img style="height: 250px;width: 350px"
+                    <img class="imgUV"
                          src="http://cancerdepelebrasil.com.br/imagens/cancer-de-pele-brasil-indice-ultravioleta.jpg"
                     >
 

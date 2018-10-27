@@ -111,9 +111,7 @@ def snippet_detail(request, pk,format=None):
 
 
 def teste(request):
-    if request.POST:
-        car_id = request.POST['selectDisp']
-        redirect('/', car_id=car_id)
+
     # list1 = Dados.objects.filter(dispositivo_id=1)
     list2= Dispositivo.objects.get(pk=1)
     now = datetime.now
@@ -121,8 +119,9 @@ def teste(request):
 
     listO = Dados.objects.select_related('dispositivo')
     lat = Dispositivo.objects.get(pk=1)
-    list = Dados.objects.all().filter(dispositivo=1)
-    # list = Dados.objects.filter(data=3)
+    # list = Dados.objects.all().filter(dispositivo=1)
+    ult = Dados.objects.latest('data')
+    list = Dados.objects.filter(Dados.objects.latest('data'))
     ult = Dados.objects.latest('data')
     listDisp = Dispositivo.objects.all()
 
