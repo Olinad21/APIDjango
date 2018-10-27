@@ -119,9 +119,9 @@ def teste(request):
 
     listO = Dados.objects.select_related('dispositivo')
     lat = Dispositivo.objects.get(pk=1)
-    # list = Dados.objects.all().filter(dispositivo=1)
+    list = Dados.objects.all().filter(dispositivo=1)
     ult = Dados.objects.latest('data')
-    list = Dados.objects.filter(Dados.objects.latest('data'))
+    # list = Dados.objects.filter(Dados.objects.latest('data'))
     ult = Dados.objects.latest('data')
     listDisp = Dispositivo.objects.all()
 
