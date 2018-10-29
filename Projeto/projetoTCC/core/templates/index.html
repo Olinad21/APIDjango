@@ -11,67 +11,67 @@
             }
         }
 
-              .imgUV {
-                height: 100%;
-                width: 100%;
-            }
+        .imgUV {
+            height: 100%;
+            width: 100%;
+        }
 
-            /* Checkbox Hack */
-            /* Checkbox Hack */
-            #toggle-1 {
-                display: none;
-            }
+        /* Checkbox Hack */
+        /* Checkbox Hack */
+        #toggle-1 {
+            display: none;
+        }
 
-            label {
-                -webkit-appearance: push-button;
-                -moz-appearance: button;
-                display: inline-block;
-                cursor: pointer;
-                padding: 5px;
-            }
+        label {
+            -webkit-appearance: push-button;
+            -moz-appearance: button;
+            display: inline-block;
+            cursor: pointer;
+            padding: 5px;
+        }
 
-            /* CSS padrão da div */
-            #mostra {
-                display: none;
-            }
+        /* CSS padrão da div */
+        #mostra {
+            display: none;
+        }
 
-            /* CSS quando o checkbox está marcado */
-            #toggle-1:checked ~ #mostra {
-                display: block;
-            }
+        /* CSS quando o checkbox está marcado */
+        #toggle-1:checked ~ #mostra {
+            display: block;
+        }
 
-            .sticky-footer {
-                position: relative;
-                top: 15px;
-                color: #FFFFFF;
+        .sticky-footer {
+            position: relative;
+            top: 15px;
+            color: #FFFFFF;
 
-            }
+        }
 
-            .footer {
-                max-width: 100%;
-                width: 100%;
-                height: 60px;
-                align-content: center;
-                align-items: center;
-                text-align: center;
-                margin-top: 120px;
-                background: rgba(0, 1, 0, 0.77);
+        .footer {
+            max-width: 100%;
+            width: 100%;
+            height: 60px;
+            align-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 120px;
+            background: rgba(0, 1, 0, 0.77);
 
-            }
+        }
 
-            .divApi {
-                width: 96.5%;
-                height: 350px;
-                margin-bottom: 15px;
-                margin-left: 15px;
-                margin-right: 15px;
-                margin-top: 15px;
-            }
+        .divApi {
+            width: 96.5%;
+            height: 350px;
+            margin-bottom: 15px;
+            margin-left: 15px;
+            margin-right: 15px;
+            margin-top: 15px;
+        }
 
-            .mapApi {
-                width: 100%;
-                height: 100%;
-            }
+        .mapApi {
+            width: 100%;
+            height: 100%;
+        }
 
     </style>
     <meta charset="utf-8">
@@ -159,10 +159,6 @@
                 </select><br/><br/>
             </form>
 
-            <a href="/admin/core/dispositivo/add/">
-                <i class="fas fa-plus-circle"> </i>
-            </a><br/>
-
 
             <!-- Icon Cards-->
             <div class="row">
@@ -223,8 +219,26 @@
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table"></i>
-                    Dados do Dispositivo
+                    <strong>Dados do Dispositivo</strong>
+
+                    <div>
+                        <br />
+                        <a href="/admin/core/dados/add/">
+
+                            <i class="fas fa-plus-circle"> </i>
+                        </a>
+                        <a href="/admin/core/dados/">
+
+                            <i class="fas fa-edit"> </i>
+                        </a>
+                        <a href="/admin/core/dados/add/">
+
+                            <i class="fas fa-trash"> </i>
+                        </a>
+                        <br/>
+                    </div>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="dTable" class="table table-bordered table-hover table-striped">

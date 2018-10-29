@@ -4,9 +4,9 @@ from .models import Dados,Dispositivo
 class DadosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dados
-        fields = ('id','dispositivo','leituraUV','data')
+        fields = ('dispositivo','leituraUV','data')
 
 class DispositivoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dispositivo
-        fields = ('id','nome','longitude','latitude')
+        fields = ('nome','longitude','latitude')

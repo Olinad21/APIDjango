@@ -176,23 +176,33 @@
     </div>
 
 
-    <form>
-        <div class="form-group col-md-4">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                   placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group col-md-4">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <div class="formulario">
+        <form action="add" method="POST"> {% csrf_token %}
+            <div class="form-group col-md-4">
+                Leitura UV
+                <input type="text" class="form-control" required
+                       placeholder="0" name="leituraUV">
+                <small id="emailHelp" class="form-text text-muted">
+                </small>
+            </div>
+            <div class="form-group col-md-4">
+                Dispositivo
+                <strong>
+                    <p>Selecione o Dispositivo</p>
+                </strong>
+
+                <select id="optDisp" name="dispositivo" required>
+                    {% for s in listDisp %}
+                    <option>{{s.nome}}</option>
+                    {% endfor %}
+                </select><br/><br/>
+
+            </div>
+            <div class="form-group col-md-4">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
 
 
 </div>

@@ -1,13 +1,15 @@
 from django.db import models
-
+from datetime import datetime
 
 class Dados(models.Model):
     leituraUV = models.IntegerField()
-    data = models.DateTimeField()
+    data = models.DateTimeField(default=datetime.now(),)
     dispositivo = models.ForeignKey('Dispositivo', on_delete=models.CASCADE)
 
     def __str__(self):
         return "%d" % (self.leituraUV)
+
+
 
 
 
