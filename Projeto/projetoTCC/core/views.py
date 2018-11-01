@@ -1,15 +1,20 @@
+from datetime import datetime
 from django.shortcuts import render
 from .models import Dispositivo,Dados
+
 from .serializers import DadosSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 from rest_framework.views import APIView
+
 from rest_framework.decorators import api_view
 from datetime import datetime, timedelta, time
 from django.utils import timezone
 
 def list(request):
+
+
     today = timezone.now().date()
     tomorrow = today + timedelta(1)
     today_start = datetime.combine(today, time())
