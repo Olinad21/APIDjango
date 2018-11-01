@@ -1,36 +1,30 @@
-from datetime import datetime
 from django.shortcuts import render
 from .models import Dispositivo,Dados
-
 from .serializers import DadosSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 from rest_framework.views import APIView
-
 from rest_framework.decorators import api_view
-
+from datetime import datetime, timedelta, time
+from django.utils import timezone
 
 def list(request):
-
-
-    list2= Dispositivo.objects.get(pk=1)
-    now = datetime.now
-    #hoje=now.day
-
+    today = timezone.now().date()
+    tomorrow = today + timedelta(1)
+    today_start = datetime.combine(today, time())
+    today_end = datetime.combine(tomorrow, time())
     listO = Dados.objects.select_related('dispositivo')
-    lat = Dispositivo.objects.get(pk=1)
-    list = Dados.objects.all().filter(dispositivo=1)
-    ult = Dados.objects.latest('data')
-    # list = Dados.objects.filter(Dados.objects.latest('data'))
+    loc = Dispositivo.objects.get(pk=1)
+    list = Dados.objects.all().filter(dispositivo=1).filter(data__lte=today_end, data__gte=today_start)
     ult = Dados.objects.latest('data')
     listDisp = Dispositivo.objects.all()
 
     api_key = 'AIzaSyC-gwBjleF-ixYwe5NhiF6TMVIMNe1WED4'
     contex = { 'list':list,
               'api_key': api_key,
-              'lat': lat,
-              'long': '-48.06575099999998',
+              'lat': loc,
+              'long': loc,
               'ult':ult,
               'listO':listO,
               'listDisp':listDisp,

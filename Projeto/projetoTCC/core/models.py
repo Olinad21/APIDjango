@@ -1,9 +1,9 @@
 from django.db import models
-from datetime import datetime
+from django.utils import timezone
 
 class Dados(models.Model):
     leituraUV = models.IntegerField()
-    data = models.DateTimeField(default=datetime.now(),)
+    data = models.DateTimeField(default=timezone.now(),)
     dispositivo = models.ForeignKey('Dispositivo', on_delete=models.CASCADE)
 
     def __str__(self):
